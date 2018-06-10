@@ -3,7 +3,7 @@
 #    dalejandro_acdc@yahoo.com                                                                    #
 #    9 de Junio de 2018                                                                           #
 #    This script shows the module with the largest time of each path                              #
-#    Ex: python hlt_Max.py file1DQM.root file2DQM.root 305636 305670                              #
+#    Ex: python hlt_Max.py fileDQM.root 305636                                                    #
 ###################################################################################################
 import os,sys
 import subprocess
