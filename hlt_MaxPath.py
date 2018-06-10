@@ -13,7 +13,7 @@ import commands
 import operator
 from time import gmtime, localtime, strftime
 #README Change the path to your root directory
-sys.path.append(r'C:\root_v5.34.34\bin') 
+#sys.path.append(r'C:\root_v5.34.34\bin') 
 from ROOT import gPad, gROOT, TCanvas, TH1F, TFile, TLegend, gStyle,gDirectory
 import io
 
@@ -39,7 +39,6 @@ def getMax(file,run):
     tfile = TFile(file)
     dirname = "DQMData/Run %s/HLT/Run summary/TimerService/process %s paths" % (run, process)
     gDirectory.cd(dirname)
-    #f = io.open('asno3.txt','w',encoding='utf8')
     for everyPath in gDirectory.GetListOfKeys():
         if everyPath.GetName().startswith("path "):
             hist=tfile.Get(dirname+"/"+everyPath.GetName()+"/module_time_real_total")
@@ -51,7 +50,6 @@ def getMax(file,run):
                     maxBin=everyIndexProcces
                     maxTime=hist.GetBinContent(maxBin)
             pathList.append(Triplet(everyPath.GetName(),hist.GetXaxis().GetBinLabel(maxBin),hist.GetBinContent(maxBin)))
-            #f.write(unicode(everyPath.GetName())+' '+unicode(hist.GetXaxis().GetBinLabel(maxBin))+' '+unicode(hist.GetBinContent(maxBin))+'\n')
     return pathList
 
 def wirte_csv(pathList,file):
