@@ -4,7 +4,7 @@
 #    June 16, 2018                                                                                #
 #    This script shows a file with a sorted  list of the paths with most contribution of time     #
 #    in a interval specified                                                                      #
-#    Ex: python hlt_MostContributingPaths.py fileDQM.root 305670 lowerLimit upperLimit                           #
+#    Ex: python hlt_MostContributingPaths.py fileDQM.root 305670 lowerLimit upperLimit            #
 ###################################################################################################
 import os,sys
 import subprocess
@@ -78,6 +78,11 @@ def main():
     #check the ranges of the limits
     if not(intLowerLimit>=0 and intUpperLimit<=1000 and intLowerLimit<=intUpperLimit):
         print " Out of range limits. Please check."
+        sys.exit(1)
+
+    #check the value of the limits
+    if not(intLowerLimit%5==0 and intUpperLimit%5==0):
+        print " The limits must be a multiple of 5."
         sys.exit(1)
 
     #getPathOrderByIntegral and print in a csv file
